@@ -1,24 +1,23 @@
 package com.foxminded.maksimfomenko;
 
-import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class CalculatorTime {
-    RacersList racersList = new RacersList();
-    Map<String, String> bestLap = new HashMap<>();
-    Map<String, Double> unsortedMap = timeLap();
-    Map<String, Double> sortedMap = unsortedMap.entrySet()
+public class TimeCalculator {
+    RacersList racersList;
+
+    public TimeCalculator(RacersList racersList) {
+        this.racersList = racersList;
+    }
+
+    Map<String, Double> unsortedBestLapTime = timeLap();
+    Map<String, Double> sortedBestLapTime = unsortedBestLapTime.entrySet()
             .stream()
             .sorted(Map.Entry.comparingByValue())
             .collect(Collectors.toMap(
                     Map.Entry::getKey,
                     Map.Entry::getValue,
                     (oldValue, newValue) -> oldValue, LinkedHashMap::new));
-
-    public CalculatorTime() throws IOException {
-    }
-
 
     public Map<String, Double> timeLap() {
         Map<String, Double> temp = new HashMap<>();

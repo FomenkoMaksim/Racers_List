@@ -1,31 +1,35 @@
 package com.foxminded.maksimfomenko;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.stream.Stream;
+import java.io.InputStream;
 
 public class LogReader {
-    private final Stream<String> start;
-    private final Stream<String> end;
-    private final Stream<String> abbreviations;
+    private static final String START = "start.log";
+    private static final String END = "end.log";
+    private static final String ABBREVIATIONS = "abbreviations.txt";
 
-    public LogReader() throws IOException {
-        this.start = Files.lines(Paths.get("C:\\Java\\workspace\\task-6\\src\\main\\resources\\start.log"));
-        this.end = Files.lines(Paths.get("C:\\Java\\workspace\\task-6\\src\\main\\resources\\end.log"));
-        this.abbreviations = Files.lines(Paths.get("C:\\Java\\workspace\\task-6\\src\\main\\resources\\abbreviations.txt"));
+
+    private InputStream getFileFromResourceAsStream(String fileName) {
+
+        ClassLoader classLoader = getClass().getClassLoader();
+        InputStream inputStream = classLoader.getResourceAsStream(fileName);
+
+        if (inputStream == null) {
+            throw new IllegalArgumentException("file not found! " + fileName);
+        } else {
+            return inputStream;
+        }
     }
 
-    public Stream<String> getStart() {
-        return start;
+    public InputStream getStart() {
+        return getFileFromResourceAsStream(START);
     }
 
-    public Stream<String> getEnd() {
-        return end;
+    public InputStream getEnd() {
+        return getFileFromResourceAsStream(END);
     }
 
-    public Stream<String> getAbbreviations() {
-        return abbreviations;
+    public InputStream getAbbreviations() {
+        return getFileFromResourceAsStream(ABBREVIATIONS);
     }
 
 }
