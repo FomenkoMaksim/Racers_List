@@ -1,29 +1,15 @@
 package com.foxminded.maksimfomenko;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
-public class TimeCalculator {
-    RacersList racersList;
-
-    public TimeCalculator(RacersList racersList) {
-        this.racersList = racersList;
-    }
-
-    Map<String, Double> unsortedBestLapTime = timeLap();
-    Map<String, Double> sortedBestLapTime = unsortedBestLapTime.entrySet()
-            .stream()
-            .sorted(Map.Entry.comparingByValue())
-            .collect(Collectors.toMap(
-                    Map.Entry::getKey,
-                    Map.Entry::getValue,
-                    (oldValue, newValue) -> oldValue, LinkedHashMap::new));
+public class TimeCalculator implements InterfaceCalcTime {
+    InterfaceTime time = new RacersList();
 
     public Map<String, Double> timeLap() {
         Map<String, Double> temp = new HashMap<>();
-        for (Map.Entry<String, String> entry : racersList.getStartMap().entrySet()) {
-            if (racersList.getEndMap().containsKey(entry.getKey())) {
-                double secDiff =  timeInSeconds(racersList.getEndMap().get(entry.getKey())) - timeInSeconds(racersList.getStartMap().get(entry.getKey()));
+        for (Map.Entry<String, String> entry : time.getStartMap().entrySet()) {
+            if (time.getEndMap().containsKey(entry.getKey())) {
+                double secDiff =  timeInSeconds(time.getEndMap().get(entry.getKey())) - timeInSeconds(time.getStartMap().get(entry.getKey()));
                 temp.put(entry.getKey(), secDiff);
             }
         }

@@ -3,15 +3,16 @@ package com.foxminded.maksimfomenko;
 import java.util.Map;
 
 public class Formatter {
-    private final RacersList racersList = new RacersList();
-    private final TimeCalculator calcTime = new TimeCalculator(racersList);
+    private final InterfaceTime racersList = new RacersList();
+    private final InterfaceCalcTime calcTime = new TimeCalculator();
+    private final InterfaceSorter<String, Double> sortedTime = new ResultSorter();
     private final StringBuilder sb = new StringBuilder();
 
     private final Map<String, String[]> fullNameRacers = racersList.getAllRacersFullName();
     private int num = 0;
 
     public String format() {
-        calcTime.sortedBestLapTime.keySet().forEach(key -> {
+        sortedTime.sort(calcTime.timeLap()).keySet().forEach(key -> {
             num++;
             String[] tempArr = fullNameRacers.get(key);
 
@@ -24,7 +25,7 @@ public class Formatter {
                     .append("| ")
                     .append(String.format("%-25s", tempArr[1]))
                     .append("| ")
-                    .append(calcTime.secondsToStringTime(calcTime.sortedBestLapTime.get(key)))
+                    .append(calcTime.secondsToStringTime(sortedTime.sort(calcTime.timeLap()).get(key)))
                     .append("\n");
         });
         return sb.toString();

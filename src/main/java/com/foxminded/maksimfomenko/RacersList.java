@@ -9,12 +9,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class RacersList {
-    LogReader lr = new LogReader();
+public class RacersList extends LogReader implements InterfaceTime {
 
-    private final List<String> startLogToList = streamToList(lr.getStart());
-    private final List<String> endLogToList = streamToList(lr.getEnd());
-    private final List<String> allRacers = streamToList(lr.getAbbreviations());
+    private final List<String> startLogToList = streamToList(getStart());
+    private final List<String> endLogToList = streamToList(getEnd());
+    private final List<String> allRacers = streamToList(getAbbreviations());
 
 
     private List<String> streamToList(InputStream is) {

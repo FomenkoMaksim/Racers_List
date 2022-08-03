@@ -7,7 +7,6 @@ public class LogReader {
     private static final String END = "end.log";
     private static final String ABBREVIATIONS = "abbreviations.txt";
 
-
     private InputStream getFileFromResourceAsStream(String fileName) {
 
         ClassLoader classLoader = getClass().getClassLoader();
