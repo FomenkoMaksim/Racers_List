@@ -2,17 +2,18 @@ package com.foxminded.maksimfomenko;
 
 import java.util.*;
 
-public class TimeCalculator implements InterfaceCalcTime {
-    InterfaceTime time = new RacersList();
+public class TimeCalculator extends Sorter {
+    public Map<String, String> lapTime(Map<String, String> startMap, Map<String, String> endMap) {
 
-    public Map<String, Double> timeLap() {
-        Map<String, Double> temp = new HashMap<>();
-        for (Map.Entry<String, String> entry : time.getStartMap().entrySet()) {
-            if (time.getEndMap().containsKey(entry.getKey())) {
-                double secDiff =  timeInSeconds(time.getEndMap().get(entry.getKey())) - timeInSeconds(time.getStartMap().get(entry.getKey()));
-                temp.put(entry.getKey(), secDiff);
+        Map<String, String> temp = new HashMap<>();
+
+        for (Map.Entry<String, String> entry : startMap.entrySet()) {
+            if (endMap.containsKey(entry.getKey())) {
+                double secDiff =  timeInSeconds(endMap.get(entry.getKey())) - timeInSeconds(startMap.get(entry.getKey()));
+                temp.put(entry.getKey(), secondsToStringTime(secDiff));
             }
         }
+
         return temp;
     }
 
