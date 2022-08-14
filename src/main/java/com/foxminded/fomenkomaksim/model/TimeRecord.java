@@ -1,4 +1,4 @@
-package com.example.model;
+package com.foxminded.fomenkomaksim.model;
 
 import java.time.LocalDateTime;
 import java.util.Objects;

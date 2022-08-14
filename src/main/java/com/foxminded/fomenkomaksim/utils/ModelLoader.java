@@ -1,9 +1,9 @@
-package com.example.utils;
+package com.foxminded.fomenkomaksim.utils;
 
-import com.example.mapper.RacerMapper;
-import com.example.mapper.TimeRecordMapper;
-import com.example.model.Racer;
-import com.example.model.TimeRecord;
+import com.foxminded.fomenkomaksim.mapper.RacerMapper;
+import com.foxminded.fomenkomaksim.mapper.TimeRecordMapper;
+import com.foxminded.fomenkomaksim.model.Racer;
+import com.foxminded.fomenkomaksim.model.TimeRecord;
 
 import java.io.IOException;
 import java.net.URISyntaxException;

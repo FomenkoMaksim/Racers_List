@@ -1,6 +1,6 @@
-package com.example.mapper;
+package com.foxminded.fomenkomaksim.mapper;
 
-import com.example.model.Racer;
+import com.foxminded.fomenkomaksim.model.Racer;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

@@ -1,4 +1,4 @@
-package com.example.model;
+package com.foxminded.fomenkomaksim.model;
 
 import java.util.Objects;
 

@@ -1,17 +1,18 @@
-package com.example.utils;
+package com.foxminded.fomenkomaksim.utils;
 
-import com.example.model.Racer;
+import com.foxminded.fomenkomaksim.model.Racer;
 
 import java.util.Comparator;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import static com.example.utils.ModelUtils.durationFormatter;
-import static com.example.utils.ModelUtils.lapDuration;
+import static com.foxminded.fomenkomaksim.utils.ModelUtils.durationFormatter;
+import static com.foxminded.fomenkomaksim.utils.ModelUtils.lapDuration;
 import static java.util.stream.Collectors.joining;
 
 public class TableBuilder {
     public static String buildTable(List<Racer> racers, Comparator<Racer> tableComparator) {
+        String dash = "-";
         AtomicInteger counter = new AtomicInteger();
 
         String table = racers.stream()
@@ -21,7 +22,7 @@ public class TableBuilder {
                         r.getName(),
                         r.getTeam(),
                         lapDuration.andThen(durationFormatter).apply(r)))
-                .map(line -> counter.get() != 15 ? line : (line + "\n--------"))
+                .map(line -> counter.get() != 15 ? line : (line + "\n" + dash.repeat(81)))
                 .collect(joining("\n"));
         return table;
     }

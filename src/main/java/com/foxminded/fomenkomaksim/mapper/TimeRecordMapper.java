@@ -1,6 +1,6 @@
-package com.example.mapper;
+package com.foxminded.fomenkomaksim.mapper;
 
-import com.example.model.TimeRecord;
+import com.foxminded.fomenkomaksim.model.TimeRecord;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -12,7 +12,6 @@ public class TimeRecordMapper implements Function<String, TimeRecord> {
 
     @Override
     public TimeRecord apply(String s) {
-        String str = "1986-04-08 12:30";
         String key = s.substring(0, 3);
         String timeString = s.substring(3);
         LocalDateTime parsedTime = LocalDateTime.parse(timeString, formatter);

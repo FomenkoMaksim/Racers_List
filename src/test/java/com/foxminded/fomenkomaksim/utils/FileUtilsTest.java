@@ -1,4 +1,4 @@
-package com.example.utils;
+package com.foxminded.fomenkomaksim.utils;
 
 import org.junit.jupiter.api.Test;
 

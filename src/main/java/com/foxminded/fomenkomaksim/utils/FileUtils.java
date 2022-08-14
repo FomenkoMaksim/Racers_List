@@ -1,4 +1,4 @@
-package com.example.utils;
+package com.foxminded.fomenkomaksim.utils;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
