@@ -20,7 +20,7 @@ public class ModelLoader {
         return ModelLoader.parse(FileUtils.readTextFromResources(filename), mapper);
     }
 
-    public static <T> List<T> parse(List<String> source, Function<String, T> mapper) {
+    private static <T> List<T> parse(List<String> source, Function<String, T> mapper) {
         return source.stream().map(mapper).collect(Collectors.toList());
     }
 
